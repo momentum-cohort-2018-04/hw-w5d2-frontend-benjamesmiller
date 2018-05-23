@@ -14,7 +14,7 @@ function itunesAPI(searchTerm) {
 
 //artistName, artworkURL100, trackName
 
-$(document).on('.click', '.button', function (event) {
+$(document).on('click', '.button', function (event) {
     let searchTerm = $('.input').val()
     
     function displayRes() {
