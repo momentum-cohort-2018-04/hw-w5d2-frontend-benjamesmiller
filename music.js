@@ -16,16 +16,24 @@ function itunesAPI(searchTerm) {
 
 $(document).on('.click', '.button', function (event) {
     let searchTerm = $('.input').val()
-    displayRes(searchTerm)
-})
-
-function displayRes() {
-    let searchTerm = $('.input').val()
-    request
-    .get(itunesAPI(searchTerm))
-    .then(response => {
-        let parsedarray = JSON.parse(response.text)
-       // $('.output').html(parsedarray)
-       console.log(parsedarray)
+    
+    function displayRes() {
+        let searchTerm = $('.input').val()
+        request
+        .get(itunesAPI(searchTerm))
+        .then(response => {
+            let parsedarray = JSON.parse(response.text)
+                function arrayHTML(parsedarray) {
+                    let thatArray = []
+                    let artName = parsedarray.artistName
+                    let songPIC = parsedarray.artworkURL100
+                    let songtitle = parsedarray.trackName
+        
+            for (i=0; i < parsedarray.legth; i++) {
+            thatArray.push(artName, songPIC, songtitle)
+            }
+        }
+        $('.output').html(arrayHTML)
     })
     }
+})
